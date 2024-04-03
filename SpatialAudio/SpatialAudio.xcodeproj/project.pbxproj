@@ -17,6 +17,7 @@
 		96502C0D2BBD53D800C63DD8 /* AudioSpatializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96502C0C2BBD53D800C63DD8 /* AudioSpatializer.swift */; };
 		96502C0F2BBD5DBE00C63DD8 /* ping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96502C0E2BBD5DBE00C63DD8 /* ping.mp3 */; };
 		96502C112BBD5EAF00C63DD8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96502C102BBD5EAF00C63DD8 /* MainViewController.swift */; };
+		96502C132BBD9C0C00C63DD8 /* Float4x4+RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96502C122BBD9C0C00C63DD8 /* Float4x4+RotationMatrix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		96502C0C2BBD53D800C63DD8 /* AudioSpatializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSpatializer.swift; sourceTree = "<group>"; };
 		96502C0E2BBD5DBE00C63DD8 /* ping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ping.mp3; sourceTree = "<group>"; };
 		96502C102BBD5EAF00C63DD8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		96502C122BBD9C0C00C63DD8 /* Float4x4+RotationMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float4x4+RotationMatrix.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				96502BE72BBD526200C63DD8 /* LaunchScreen.storyboard */,
 				96502BEA2BBD526200C63DD8 /* Info.plist */,
 				96502C0C2BBD53D800C63DD8 /* AudioSpatializer.swift */,
+				96502C122BBD9C0C00C63DD8 /* Float4x4+RotationMatrix.swift */,
 				96502C0E2BBD5DBE00C63DD8 /* ping.mp3 */,
 				96502C102BBD5EAF00C63DD8 /* MainViewController.swift */,
 			);
@@ -264,6 +267,7 @@
 			files = (
 				96502C112BBD5EAF00C63DD8 /* MainViewController.swift in Sources */,
 				96502BDD2BBD526100C63DD8 /* AppDelegate.swift in Sources */,
+				96502C132BBD9C0C00C63DD8 /* Float4x4+RotationMatrix.swift in Sources */,
 				96502C0D2BBD53D800C63DD8 /* AudioSpatializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +453,7 @@
 				DEVELOPMENT_TEAM = 6G4QV27Y5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpatialAudio/Info.plist;
+				INFOPLIST_KEY_NSMotionUsageDescription = "Record motion data to pan audio from your AirPods.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -477,6 +482,7 @@
 				DEVELOPMENT_TEAM = 6G4QV27Y5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpatialAudio/Info.plist;
+				INFOPLIST_KEY_NSMotionUsageDescription = "Record motion data to pan audio from your AirPods.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

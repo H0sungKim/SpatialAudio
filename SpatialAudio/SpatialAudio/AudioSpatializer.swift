@@ -8,6 +8,7 @@
 import PHASE
 import AVFoundation
 import CoreMotion
+import UIKit
 
 class AudioSpatializer: ObservableObject {
     
@@ -30,7 +31,7 @@ class AudioSpatializer: ObservableObject {
 
         let distanceModelParameters = PHASEGeometricSpreadingDistanceModelParameters()
         distanceModelParameters.fadeOutParameters = PHASEDistanceModelFadeOutParameters(cullDistance: 10.0)
-        distanceModelParameters.rolloffFactor = 0.25
+        distanceModelParameters.rolloffFactor = 1.0
         spatialMixerDefinition.distanceModelParameters = distanceModelParameters
         
         let samplerNodeDefinition = PHASESamplerNodeDefinition(soundAssetIdentifier: "ping", mixerDefinition:spatialMixerDefinition)
@@ -49,11 +50,10 @@ class AudioSpatializer: ObservableObject {
         let shape = PHASEShape(engine: phaseEngine, mesh: mesh)
         let source = PHASESource(engine: phaseEngine, shapes: [shape])
         var sourceTransform: simd_float4x4 = simd_float4x4()
-//        sourceTransform.columns.0 = simd_make_float4(-1.0, 0.0, 0.0, 0.0)
-//        sourceTransform.columns.1 = simd_make_float4(0.0, 1.0, 0.0, 0.0)
-//        sourceTransform.columns.2 = simd_make_float4(0.0, 0.0, -1.0, 0.0)
-//        // columns3 첫번째 애 -가 왼쪽, +가 오른쪽
-//        sourceTransform.columns.3 = simd_make_float4(0.0, 0.0, 2.0, 1.0)
+        sourceTransform.columns.0 = simd_make_float4(-1.0, 0.0, 0.0, 0.0)
+        sourceTransform.columns.1 = simd_make_float4(0.0, 1.0, 0.0, 0.0)
+        sourceTransform.columns.2 = simd_make_float4(0.0, 0.0, -1.0, 0.0)
+        sourceTransform.columns.3 = simd_make_float4(0.0, 0.0, 2.0, 1.0)
         
         source.transform = sourceTransform;
         try! phaseEngine.rootObject.addChild(source)
@@ -85,6 +85,19 @@ class AudioSpatializer: ObservableObject {
         streamSoundEvent.start()
         myTap.start()
         // Get data from the AirPods pro for panning the listener (if it's available)
+         */
+        mixerParameters.addSpatialMixerParameters(identifier: spatialMixerDefinition.identifier, source: source, listener: listener)
+        soundEvent = try! PHASESoundEvent(engine: phaseEngine, assetIdentifier: "pingevent", mixerParameters: mixerParameters)
+        
+        // Start the Engine.
+        // This will internally start the Audio IO Thread.
+        try! phaseEngine.start()
+        
+        // Start the Sound Event.
+        soundEvent.start()
+        
+        
+        
         if motionManager.isDeviceMotionAvailable && !motionManager.isDeviceMotionActive {
             motionManager.startDeviceMotionUpdates(to: .main) { [self] deviceMotion, error in
                 if let deviceMotion = deviceMotion {
@@ -104,16 +117,7 @@ class AudioSpatializer: ObservableObject {
                 }
             }
         }
-         */
-        mixerParameters.addSpatialMixerParameters(identifier: spatialMixerDefinition.identifier, source: source, listener: listener)
-        soundEvent = try! PHASESoundEvent(engine: phaseEngine, assetIdentifier: "pingevent", mixerParameters: mixerParameters)
         
-        // Start the Engine.
-        // This will internally start the Audio IO Thread.
-        try! phaseEngine.start()
-        
-        // Start the Sound Event.
-        soundEvent.start()
     }
     
     deinit {

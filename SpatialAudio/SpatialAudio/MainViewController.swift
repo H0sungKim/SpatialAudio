@@ -8,10 +8,10 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    let audioSpatializer: AudioSpatializer = AudioSpatializer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let audioSpatializer: AudioSpatializer = AudioSpatializer()
         // Do any additional setup after loading the view.
     }
 
